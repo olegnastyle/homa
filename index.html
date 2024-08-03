@@ -23,7 +23,9 @@
     }
 
     body {
-        width: 320px;
+        width: 480px;
+        min-width: 320px;
+        max-width: 480px;
         margin: 0 auto;
         background: wheat;
     }
@@ -66,19 +68,17 @@
 
     <div>
         <h1><span id="number"></span> кликов</h1>
-        <button ontouchstart="increaseNumber()"></button>
+        <button ontouchstart="increaseNumber()" onclick="increaseNumber()"></button>
     </div>
 
     <script>
-        let num = localStorage.getItem("number") || 0; // Проверяем, есть ли значение в localStorage
+       let num = localStorage.getItem("number") || 0; // Проверяем, есть ли значение в localStorage
         document.getElementById("number").innerText = num;
-        
-        function increaseNumber(event) {
-          if (event.touches.length <= 10) {
-            num++;
-            document.getElementById("number").innerText = num;
-            localStorage.setItem("number", num); // Сохраняем значение в localStorage
-          }
+
+        function increaseNumber() {
+        num++;
+        document.getElementById("number").innerText = num;
+        localStorage.setItem("number", num); // Сохраняем значение в localStorage
         }
     </script>
 </body>
