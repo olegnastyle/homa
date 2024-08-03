@@ -66,7 +66,7 @@
 
     <div>
         <h1><span id="number"></span> кликов</h1>
-        <button ontouchstart="increaseNumber()" onclick="increaseNumber()"></button>
+        <button ontouchstart="increaseNumber()" onclick="increaseNumber()" ontouchend="removeAnimationClass(this)"></button>
     </div>
 
     <script>
@@ -78,6 +78,9 @@
         document.getElementById("number").innerText = num;
         localStorage.setItem("number", num); // Сохраняем значение в localStorage
         }
+        function removeAnimationClass(button) {
+       button.classList.remove('animated-button');
+     }
     </script>
 </body>
 
