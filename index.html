@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Увеличение числа с сохранением в localStorage</title>
+<style>
+    @keyframes identifier {
+        100% {
+            transform: skew(5deg, 5deg);
+        }
+    }
+
+    @keyframes identifier2 {
+        0% {
+            background: linear-gradient(to top, #ff7e5f, #feb47b);
+        }
+
+        100% {
+            background: linear-gradient(to top, #feb47b, #ff7e5f);
+        }
+    }
+
+    body {
+        width: 480px;
+        min-width: 320px;
+        max-width: 480px;
+        margin: 0 auto;
+        background: wheat;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        background-image: url('https://www.meme-arsenal.com/memes/d8fb33ae7cbcbcf362c77246e253002f.jpg');
+        background-size: 180%;
+        background-position: -60px 0;
+        width: 150px;
+        height: 150px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 32px;
+        position: relative;
+    }
+
+    button:before {
+        position: absolute;
+        content: '';
+        z-index: -1;
+        inset: -5px;
+        border-radius: 50%;
+        animation: identifier2 2s linear infinite alternate;
+    }
+
+    button:active {
+        animation: identifier .1s linear alternate;
+    }
+</style>
+</head>
+
+<body>
+
+    <div>
+        <h1><span id="number"></span> кликов</h1>
+        <button onclick="increaseNumber()"></button>
+    </div>
+
+    <script>
+        let num = localStorage.getItem("number") || 0; // Проверяем, есть ли значение в localStorage
+        document.getElementById("number").innerText = num;
+
+        function increaseNumber() {
+            num++;
+            document.getElementById("number").innerText = num;
+            localStorage.setItem("number", num); // Сохраняем значение в localStorage
+        }
+    </script>
+</body>
+
+</html>
