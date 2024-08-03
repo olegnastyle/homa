@@ -72,11 +72,13 @@
     <script>
         let num = localStorage.getItem("number") || 0; // Проверяем, есть ли значение в localStorage
         document.getElementById("number").innerText = num;
-
-        function increaseNumber() {
+        
+        function increaseNumber(event) {
+          if (event.touches.length <= 10) {
             num++;
             document.getElementById("number").innerText = num;
             localStorage.setItem("number", num); // Сохраняем значение в localStorage
+          }
         }
     </script>
 </body>
